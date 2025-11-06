@@ -3,6 +3,7 @@ export type Book = {
   title: string;
   author: string;
   progress: number;
+  shelf: BookShelf;
   startDate?: string;
   endDate?: string;
   rating: number | null;

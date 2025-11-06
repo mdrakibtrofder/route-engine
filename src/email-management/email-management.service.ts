@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { EmailCategory } from './interfaces/email-management.interface';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { EmailCategory, Service } from './interfaces/email-management.interface';
 
 @Injectable()
 export class EmailManagementService {
@@ -31,5 +31,50 @@ export class EmailManagementService {
     return this.emails;
   }
 
-  // Add methods to add/edit/delete services and emails
+  addService(category: string, email: string, service: Omit<Service, 'id'>): Service {
+    const emailCategory = this.emails[category as keyof EmailCategory];
+    if (!emailCategory) {
+      throw new NotFoundException(`Category ${category} not found`);
+    }
+    const emailData = emailCategory.find((e) => e.email === email);
+    if (!emailData) {
+      throw new NotFoundException(`Email ${email} not found in category ${category}`);
+    }
+    const newService = { ...service, id: Date.now().toString() };
+    emailData.services.push(newService);
+    return newService;
+  }
+
+  updateService(category: string, email: string, serviceId: string, updatedService: Partial<Service>): Service {
+    const emailCategory = this.emails[category as keyof EmailCategory];
+    if (!emailCategory) {
+      throw new NotFoundException(`Category ${category} not found`);
+    }
+    const emailData = emailCategory.find((e) => e.email === email);
+    if (!emailData) {
+      throw new NotFoundException(`Email ${email} not found in category ${category}`);
+    }
+    const serviceIndex = emailData.services.findIndex((s) => s.id === serviceId);
+    if (serviceIndex === -1) {
+      throw new NotFoundException(`Service with ID ${serviceId} not found`);
+    }
+    emailData.services[serviceIndex] = { ...emailData.services[serviceIndex], ...updatedService };
+    return emailData.services[serviceIndex];
+  }
+
+  deleteService(category: string, email: string, serviceId: string): void {
+    const emailCategory = this.emails[category as keyof EmailCategory];
+    if (!emailCategory) {
+      throw new NotFoundException(`Category ${category} not found`);
+    }
+    const emailData = emailCategory.find((e) => e.email === email);
+    if (!emailData) {
+      throw new NotFoundException(`Email ${email} not found in category ${category}`);
+    }
+    const serviceIndex = emailData.services.findIndex((s) => s.id === serviceId);
+    if (serviceIndex === -1) {
+      throw new NotFoundException(`Service with ID ${serviceId} not found`);
+    }
+    emailData.services.splice(serviceIndex, 1);
+  }
 }

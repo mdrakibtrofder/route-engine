@@ -27,3 +27,4 @@ export class AffairsController {
   remove(@Param('id') id: string) {
     return this.affairsService.remove(+id);
   }
+}
