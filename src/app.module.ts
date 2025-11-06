@@ -16,6 +16,12 @@ import { TasksModule } from './tasks/tasks.module';
 import { TrackingModule } from './tracking/tracking.module';
 import { VideosModule } from './videos/videos.module';
 import { WritingsModule } from './writings/writings.module';
+import { ProfileModule } from './profile/profile.module';
+import { ScheduleModule } from './schedule/schedule.module';
+import { ResourcesModule } from './resources/resources.module';
+import { EmailManagementModule } from './email-management/email-management.module';
+import { MonitoringModule } from './monitoring/monitoring.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -34,6 +40,12 @@ import { WritingsModule } from './writings/writings.module';
     TrackingModule,
     VideosModule,
     WritingsModule,
+    ProfileModule,
+    ScheduleModule,
+    ResourcesModule,
+    EmailManagementModule,
+    MonitoringModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],
