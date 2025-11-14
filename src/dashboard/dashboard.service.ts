@@ -14,17 +14,39 @@ export class DashboardService {
         ideasCaptured: 10,
       },
       recentActivities: [
-        { type: "task", title: "Complete React Component Refactoring", time: "2 hours ago", status: "in-progress" },
-        { type: "course", title: "Advanced TypeScript Patterns", time: "1 day ago", status: "in-progress" },
+        {
+          type: 'task',
+          title: 'Complete React Component Refactoring',
+          time: '2 hours ago',
+          status: 'in-progress',
+        },
+        {
+          type: 'course',
+          title: 'Advanced TypeScript Patterns',
+          time: '1 day ago',
+          status: 'in-progress',
+        },
       ],
       upcomingEvents: [
-        { id: 1, title: "Team Standup Meeting", date: "2024-01-15", time: "10:00", type: "meeting" },
-        { id: 2, title: "TypeScript Advanced Course", date: "2024-01-15", time: "14:00", type: "learning" },
+        {
+          id: 1,
+          title: 'Team Standup Meeting',
+          date: '2024-01-15',
+          time: '10:00',
+          type: 'meeting',
+        },
+        {
+          id: 2,
+          title: 'TypeScript Advanced Course',
+          date: '2024-01-15',
+          time: '14:00',
+          type: 'learning',
+        },
       ],
       goals: [
-        { id: 1, title: "Launch Personal Blog Platform", progress: 75 },
-        { id: 2, title: "Complete Advanced TypeScript Mastery", progress: 60 },
-      ]
+        { id: 1, title: 'Launch Personal Blog Platform', progress: 75 },
+        { id: 2, title: 'Complete Advanced TypeScript Mastery', progress: 60 },
+      ],
     };
   }
 

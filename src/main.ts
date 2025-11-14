@@ -6,4 +6,4 @@ async function bootstrap() {
   app.enableCors();
   await app.listen(8050);
 }
-bootstrap();
+bootstrap().catch((err) => console.error(err));

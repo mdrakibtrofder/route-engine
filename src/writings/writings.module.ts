@@ -4,6 +4,6 @@ import { WritingsService } from './writings.service';
 
 @Module({
   controllers: [WritingsController],
-  providers: [WritingsService]
+  providers: [WritingsService],
 })
 export class WritingsModule {}

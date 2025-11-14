@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { AffairsService } from './affairs.service';
 import { Affair } from './interfaces/affair.interface';
 import { CreateAffairDto } from './dto/create-affair.dto';

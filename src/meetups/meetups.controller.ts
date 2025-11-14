@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { MeetUpsService } from './meetups.service';
 import { CreateMeetUpDto } from './dto/create-meetup.dto';
 import { UpdateMeetUpDto } from './dto/update-meetup.dto';

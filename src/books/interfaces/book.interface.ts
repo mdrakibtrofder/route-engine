@@ -11,4 +11,4 @@ export type Book = {
   quotes: string[];
 };
 
-export type BookShelf = "reading" | "completed" | "wishlist";
+export type BookShelf = 'reading' | 'completed' | 'wishlist';

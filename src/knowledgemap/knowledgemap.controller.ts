@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { KnowledgeMapService } from './knowledgemap.service';
 import { CreateKnowledgeNodeDto } from './dto/create-knowledge-node.dto';
 import { UpdateKnowledgeNodeDto } from './dto/update-knowledge-node.dto';
@@ -18,7 +26,10 @@ export class KnowledgeMapController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateKnowledgeNodeDto: UpdateKnowledgeNodeDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateKnowledgeNodeDto: UpdateKnowledgeNodeDto,
+  ) {
     return this.knowledgeMapService.update(+id, updateKnowledgeNodeDto);
   }
 

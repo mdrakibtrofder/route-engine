@@ -1,7 +1,25 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TrackingService } from './tracking.service';
-import { CreateHabitDto, CreateSkillDto, CreateMemorizationDto, CreateObjectiveDto } from './dto/create-tracking.dto';
-import { UpdateHabitDto, UpdateSkillDto, UpdateMemorizationDto, UpdateObjectiveDto } from './dto/update-tracking.dto';
+import {
+  CreateHabitDto,
+  CreateSkillDto,
+  CreateMemorizationDto,
+  CreateObjectiveDto,
+} from './dto/create-tracking.dto';
+import {
+  UpdateHabitDto,
+  UpdateSkillDto,
+  UpdateMemorizationDto,
+  UpdateObjectiveDto,
+} from './dto/update-tracking.dto';
 
 @Controller('tracking')
 export class TrackingController {
@@ -58,7 +76,10 @@ export class TrackingController {
   }
 
   @Put('memorizations/:id')
-  updateMemorization(@Param('id') id: string, @Body() updateMemorizationDto: UpdateMemorizationDto) {
+  updateMemorization(
+    @Param('id') id: string,
+    @Body() updateMemorizationDto: UpdateMemorizationDto,
+  ) {
     return this.trackingService.updateMemorization(+id, updateMemorizationDto);
   }
 
@@ -78,7 +99,10 @@ export class TrackingController {
   }
 
   @Put('objectives/:id')
-  updateObjective(@Param('id') id: string, @Body() updateObjectiveDto: UpdateObjectiveDto) {
+  updateObjective(
+    @Param('id') id: string,
+    @Body() updateObjectiveDto: UpdateObjectiveDto,
+  ) {
     return this.trackingService.updateObjective(+id, updateObjectiveDto);
   }
 

@@ -4,6 +4,6 @@ import { KnowledgeMapService } from './knowledgemap.service';
 
 @Module({
   controllers: [KnowledgeMapController],
-  providers: [KnowledgeMapService]
+  providers: [KnowledgeMapService],
 })
 export class KnowledgeMapModule {}

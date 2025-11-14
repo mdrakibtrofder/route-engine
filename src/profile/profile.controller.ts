@@ -16,6 +16,9 @@ export class ProfileController {
   updateProfile(@Body() updateProfileDto: UpdateProfileDto) {
     // In a real app, you would partially update the profile data.
     // For now, this is just a placeholder.
-    return { message: 'Profile update not implemented yet.', data: updateProfileDto };
+    return {
+      message: 'Profile update not implemented yet.',
+      data: updateProfileDto,
+    };
   }
 }

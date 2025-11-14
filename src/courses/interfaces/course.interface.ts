@@ -6,6 +6,6 @@ export type Course = {
   startDate: string;
   endDate: string;
   progress: number;
-  status: "completed" | "in-progress" | "planned";
+  status: 'completed' | 'in-progress' | 'planned';
   certificateUrl: string | null;
 };

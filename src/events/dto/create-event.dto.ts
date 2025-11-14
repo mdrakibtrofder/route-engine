@@ -3,6 +3,6 @@ export class CreateEventDto {
   date: string;
   time: string;
   duration: string;
-  type: "meeting" | "learning" | "work" | "personal";
+  type: 'meeting' | 'learning' | 'work' | 'personal';
   location: string;
 }
