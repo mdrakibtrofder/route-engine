@@ -27,13 +27,13 @@ export class WritingsService {
     return newWriting;
   }
 
-  update(id: number, updatedWriting: Partial<Writing>): Writing {
+  update(id: number, updatedWriting: Partial<Writing>): Writing | undefined {
     const writingIndex = this.writings.findIndex((writing) => writing.id === id);
     if (writingIndex > -1) {
       this.writings[writingIndex] = { ...this.writings[writingIndex], ...updatedWriting };
       return this.writings[writingIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

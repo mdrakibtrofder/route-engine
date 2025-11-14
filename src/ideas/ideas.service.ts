@@ -26,13 +26,13 @@ export class IdeasService {
     return newIdea;
   }
 
-  update(id: number, updatedIdea: Partial<Idea>): Idea {
+  update(id: number, updatedIdea: Partial<Idea>): Idea | undefined {
     const ideaIndex = this.ideas.findIndex((idea) => idea.id === id);
     if (ideaIndex > -1) {
       this.ideas[ideaIndex] = { ...this.ideas[ideaIndex], ...updatedIdea };
       return this.ideas[ideaIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

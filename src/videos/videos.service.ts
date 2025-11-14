@@ -20,13 +20,13 @@ export class VideosService {
     return newVideo;
   }
 
-  update(id: number, updatedVideo: Partial<Video>): Video {
+  update(id: number, updatedVideo: Partial<Video>): Video | undefined {
     const videoIndex = this.videos.findIndex((video) => video.id === id);
     if (videoIndex > -1) {
       this.videos[videoIndex] = { ...this.videos[videoIndex], ...updatedVideo };
       return this.videos[videoIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

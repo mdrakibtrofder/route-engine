@@ -52,13 +52,13 @@ export class AffairsService {
     return newAffair;
   }
 
-  update(id: number, updatedAffair: Partial<Affair>): Affair {
+  update(id: number, updatedAffair: Partial<Affair>): Affair | undefined {
     const affairIndex = this.affairs.findIndex((affair) => affair.id === id);
     if (affairIndex > -1) {
       this.affairs[affairIndex] = { ...this.affairs[affairIndex], ...updatedAffair };
       return this.affairs[affairIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

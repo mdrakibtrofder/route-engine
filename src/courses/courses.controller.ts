@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common'
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './dto/create-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
+import { Course } from './interfaces/course.interface';
 
 @Controller('courses')
 export class CoursesController {
@@ -9,7 +10,13 @@ export class CoursesController {
 
   @Post()
   create(@Body() createCourseDto: CreateCourseDto) {
-    return this.coursesService.create(createCourseDto);
+    const course: Omit<Course, 'id'> = {
+      ...createCourseDto,
+      progress: 0,
+      status: 'planned',
+      certificateUrl: null,
+    };
+    return this.coursesService.create(course);
   }
 
   @Get()

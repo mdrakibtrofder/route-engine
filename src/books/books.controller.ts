@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Put, Param, Delete, Query } from '@nestjs/
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { Book, BookShelf } from './interfaces/book.interface';
+import type { Book, BookShelf } from './interfaces/book.interface';
 
 @Controller('books')
 export class BooksController {
@@ -10,7 +10,13 @@ export class BooksController {
 
   @Post()
   create(@Body() createBookDto: CreateBookDto) {
-    return this.booksService.create(createBookDto as Omit<Book, 'id'> & { shelf: BookShelf });
+    const book: Omit<Book, 'id'> = {
+      ...createBookDto,
+      progress: 0,
+      rating: null,
+      quotes: [],
+    };
+    return this.booksService.create(book);
   }
 
   @Get()

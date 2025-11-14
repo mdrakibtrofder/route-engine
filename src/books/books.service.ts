@@ -146,13 +146,16 @@ export class BooksService {
     return this.books;
   }
 
-  create(book: Omit<Book, 'id'> & { shelf: BookShelf }): Book {
+  create(book: Omit<Book, 'id'>): Book {
     const newBook = { ...book, id: Date.now() };
     this.books[book.shelf].push(newBook);
     return newBook;
   }
 
-  update(id: number, updatedBook: Partial<Book> & { shelf?: BookShelf }): Book {
+  update(
+    id: number,
+    updatedBook: Partial<Book> & { shelf?: BookShelf },
+  ): Book | undefined {
     let currentBook: Book | undefined;
     let currentShelf: BookShelf | undefined;
 
@@ -167,8 +170,8 @@ export class BooksService {
       }
     }
 
-    if (!currentBook) {
-      return null;
+    if (!currentBook || !currentShelf) {
+      return undefined;
     }
 
     const newBookData = { ...currentBook, ...updatedBook };

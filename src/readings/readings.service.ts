@@ -136,13 +136,13 @@ export class ReadingsService {
     return newReading;
   }
 
-  update(id: number, updatedReading: Partial<Reading>): Reading {
+  update(id: number, updatedReading: Partial<Reading>): Reading | undefined {
     const readingIndex = this.readings.findIndex((reading) => reading.id === id);
     if (readingIndex > -1) {
       this.readings[readingIndex] = { ...this.readings[readingIndex], ...updatedReading };
       return this.readings[readingIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

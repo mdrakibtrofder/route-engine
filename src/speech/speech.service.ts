@@ -120,18 +120,18 @@ export class SpeechService {
   }
 
   create(speech: Omit<Speech, 'id'>): Speech {
-    const newSpeech = { ...speech, id: Date.now(), deliveries: [] };
+    const newSpeech = { ...speech, id: Date.now() };
     this.speeches.push(newSpeech);
     return newSpeech;
   }
 
-  update(id: number, updatedSpeech: Partial<Speech>): Speech {
+  update(id: number, updatedSpeech: Partial<Speech>): Speech | undefined {
     const speechIndex = this.speeches.findIndex((speech) => speech.id === id);
     if (speechIndex > -1) {
       this.speeches[speechIndex] = { ...this.speeches[speechIndex], ...updatedSpeech };
       return this.speeches[speechIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

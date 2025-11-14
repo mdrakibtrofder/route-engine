@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common'
 import { MeetUpsService } from './meetups.service';
 import { CreateMeetUpDto } from './dto/create-meetup.dto';
 import { UpdateMeetUpDto } from './dto/update-meetup.dto';
+import { MeetUp } from './interfaces/meetup.interface';
 
 @Controller('meetups')
 export class MeetUpsController {
@@ -9,7 +10,11 @@ export class MeetUpsController {
 
   @Post()
   create(@Body() createMeetUpDto: CreateMeetUpDto) {
-    return this.meetUpsService.create(createMeetUpDto);
+    const meetup: Omit<MeetUp, 'id'> = {
+      ...createMeetUpDto,
+      photos: 0,
+    };
+    return this.meetUpsService.create(meetup);
   }
 
   @Get()

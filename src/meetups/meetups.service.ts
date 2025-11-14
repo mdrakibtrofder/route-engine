@@ -21,18 +21,18 @@ export class MeetUpsService {
   }
 
   create(meetUp: Omit<MeetUp, 'id'>): MeetUp {
-    const newMeetUp = { ...meetUp, id: Date.now(), photos: 0 };
+    const newMeetUp = { ...meetUp, id: Date.now() };
     this.meetUps.push(newMeetUp);
     return newMeetUp;
   }
 
-  update(id: number, updatedMeetUp: Partial<MeetUp>): MeetUp {
+  update(id: number, updatedMeetUp: Partial<MeetUp>): MeetUp | undefined {
     const meetUpIndex = this.meetUps.findIndex((meetUp) => meetUp.id === id);
     if (meetUpIndex > -1) {
       this.meetUps[meetUpIndex] = { ...this.meetUps[meetUpIndex], ...updatedMeetUp };
       return this.meetUps[meetUpIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

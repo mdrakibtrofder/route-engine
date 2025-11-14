@@ -21,13 +21,13 @@ export class KnowledgeMapService {
     return newNode;
   }
 
-  update(id: number, updatedNode: Partial<KnowledgeNode>): KnowledgeNode {
+  update(id: number, updatedNode: Partial<KnowledgeNode>): KnowledgeNode | undefined {
     const nodeIndex = this.nodes.findIndex((node) => node.id === id);
     if (nodeIndex > -1) {
       this.nodes[nodeIndex] = { ...this.nodes[nodeIndex], ...updatedNode };
       return this.nodes[nodeIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

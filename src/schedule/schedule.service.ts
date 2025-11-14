@@ -27,13 +27,13 @@ export class ScheduleService {
     return newBlock;
   }
 
-  update(id: number, updatedBlock: Partial<ScheduleBlock>): ScheduleBlock {
+  update(id: number, updatedBlock: Partial<ScheduleBlock>): ScheduleBlock | undefined {
     const blockIndex = this.schedule.findIndex((b) => b.id === id);
     if (blockIndex > -1) {
       this.schedule[blockIndex] = { ...this.schedule[blockIndex], ...updatedBlock };
       return this.schedule[blockIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

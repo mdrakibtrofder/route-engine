@@ -126,13 +126,13 @@ export class CoursesService {
     return newCourse;
   }
 
-  update(id: number, updatedCourse: Partial<Course>): Course {
+  update(id: number, updatedCourse: Partial<Course>): Course | undefined {
     const courseIndex = this.courses.findIndex((course) => course.id === id);
     if (courseIndex > -1) {
       this.courses[courseIndex] = { ...this.courses[courseIndex], ...updatedCourse };
       return this.courses[courseIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

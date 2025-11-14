@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common'
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { Project } from './interfaces/project.interface';
 
 @Controller('projects')
 export class ProjectsController {
@@ -9,7 +10,13 @@ export class ProjectsController {
 
   @Post()
   create(@Body() createProjectDto: CreateProjectDto) {
-    return this.projectsService.create(createProjectDto);
+    const project: Omit<Project, 'id'> = {
+      ...createProjectDto,
+      progress: 0,
+      linkedTasks: 0,
+      linkedResources: 0,
+    };
+    return this.projectsService.create(project);
   }
 
   @Get()

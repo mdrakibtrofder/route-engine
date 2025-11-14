@@ -112,13 +112,13 @@ export class TasksService {
     return newTask;
   }
 
-  update(id: number, updatedTask: Partial<Task>): Task {
+  update(id: number, updatedTask: Partial<Task>): Task | undefined {
     const taskIndex = this.tasks.findIndex((task) => task.id === id);
     if (taskIndex > -1) {
       this.tasks[taskIndex] = { ...this.tasks[taskIndex], ...updatedTask };
       return this.tasks[taskIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

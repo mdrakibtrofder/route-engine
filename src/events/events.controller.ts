@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common'
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { Event } from './interfaces/event.interface';
 
 @Controller('events')
 export class EventsController {
@@ -9,7 +10,11 @@ export class EventsController {
 
   @Post()
   create(@Body() createEventDto: CreateEventDto) {
-    return this.eventsService.create(createEventDto);
+    const event: Omit<Event, 'id'> = {
+      ...createEventDto,
+      attendees: 0,
+    };
+    return this.eventsService.create(event);
   }
 
   @Get()

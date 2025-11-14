@@ -133,13 +133,13 @@ export class TrackingService {
     return newHabit;
   }
 
-  updateHabit(id: number, updatedHabit: Partial<Habit>): Habit {
+  updateHabit(id: number, updatedHabit: Partial<Habit>): Habit | undefined {
     const habitIndex = this.habits.findIndex((h) => h.id === id);
     if (habitIndex > -1) {
       this.habits[habitIndex] = { ...this.habits[habitIndex], ...updatedHabit };
       return this.habits[habitIndex];
     }
-    return null;
+    return undefined;
   }
 
   removeHabit(id: number): void {
@@ -159,13 +159,13 @@ export class TrackingService {
     return newSkill;
   }
 
-  updateSkill(id: number, updatedSkill: Partial<Skill>): Skill {
+  updateSkill(id: number, updatedSkill: Partial<Skill>): Skill | undefined {
     const skillIndex = this.skills.findIndex((s) => s.id === id);
     if (skillIndex > -1) {
       this.skills[skillIndex] = { ...this.skills[skillIndex], ...updatedSkill };
       return this.skills[skillIndex];
     }
-    return null;
+    return undefined;
   }
 
   removeSkill(id: number): void {
@@ -185,13 +185,13 @@ export class TrackingService {
     return newMemorization;
   }
 
-  updateMemorization(id: number, updatedMemorization: Partial<Memorization>): Memorization {
+  updateMemorization(id: number, updatedMemorization: Partial<Memorization>): Memorization | undefined {
     const memorizationIndex = this.memorizations.findIndex((m) => m.id === id);
     if (memorizationIndex > -1) {
       this.memorizations[memorizationIndex] = { ...this.memorizations[memorizationIndex], ...updatedMemorization };
       return this.memorizations[memorizationIndex];
     }
-    return null;
+    return undefined;
   }
 
   removeMemorization(id: number): void {
@@ -211,13 +211,13 @@ export class TrackingService {
     return newObjective;
   }
 
-  updateObjective(id: number, updatedObjective: Partial<Objective>): Objective {
+  updateObjective(id: number, updatedObjective: Partial<Objective>): Objective | undefined {
     const objectiveIndex = this.objectives.findIndex((o) => o.id === id);
     if (objectiveIndex > -1) {
       this.objectives[objectiveIndex] = { ...this.objectives[objectiveIndex], ...updatedObjective };
       return this.objectives[objectiveIndex];
     }
-    return null;
+    return undefined;
   }
 
   removeObjective(id: number): void {

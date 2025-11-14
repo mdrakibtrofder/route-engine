@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common'
 import { SpeechService } from './speech.service';
 import { CreateSpeechDto } from './dto/create-speech.dto';
 import { UpdateSpeechDto } from './dto/update-speech.dto';
+import { Speech } from './interfaces/speech.interface';
 
 @Controller('speech')
 export class SpeechController {
@@ -9,7 +10,11 @@ export class SpeechController {
 
   @Post()
   create(@Body() createSpeechDto: CreateSpeechDto) {
-    return this.speechService.create(createSpeechDto);
+    const speech: Omit<Speech, 'id'> = {
+      ...createSpeechDto,
+      deliveries: [],
+    };
+    return this.speechService.create(speech);
   }
 
   @Get()

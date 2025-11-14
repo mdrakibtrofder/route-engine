@@ -111,18 +111,18 @@ export class EventsService {
   }
 
   create(event: Omit<Event, 'id'>): Event {
-    const newEvent = { ...event, id: Date.now(), attendees: 0 };
+    const newEvent = { ...event, id: Date.now() };
     this.events.push(newEvent);
     return newEvent;
   }
 
-  update(id: number, updatedEvent: Partial<Event>): Event {
+  update(id: number, updatedEvent: Partial<Event>): Event | undefined {
     const eventIndex = this.events.findIndex((event) => event.id === id);
     if (eventIndex > -1) {
       this.events[eventIndex] = { ...this.events[eventIndex], ...updatedEvent };
       return this.events[eventIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {

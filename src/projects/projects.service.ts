@@ -26,13 +26,13 @@ export class ProjectsService {
     return newProject;
   }
 
-  update(id: number, updatedProject: Partial<Project>): Project {
+  update(id: number, updatedProject: Partial<Project>): Project | undefined {
     const projectIndex = this.projects.findIndex((project) => project.id === id);
     if (projectIndex > -1) {
       this.projects[projectIndex] = { ...this.projects[projectIndex], ...updatedProject };
       return this.projects[projectIndex];
     }
-    return null;
+    return undefined;
   }
 
   remove(id: number): void {
